@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Tasks</title>
+    <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+    <style>
+        /*<link href="../public/css/style.css" rel="stylesheet">*/
+
+            body {
+            margin: 50px 0 0 0;
+            padding: 0;
+            width: 100%;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            text-align: center;
+            color: #aaa;
+            font-size: 18px;
+            background-color: lightblue;
+        }
+
+        h1 {
+            color: #719e40;
+            letter-spacing: -3px;
+            font-family: 'Lato', sans-serif;
+            font-size: 100px;
+            font-weight: 200;
+            margin-bottom: 0;
+        }
+
+        h3 {
+            margin: 0.4rem;
+            color: #fff;
+        }
+
+        label {
+            font-size: 24pt;
+            color: #fff;
+        }
+
+        .form1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem;
+        }
+
+        .complete_button {
+            /*padding: 0;*/
+            background-color: #fff;
+            border: 0.1rem solid grey;
+            height: 1.4rem;
+
+        }
+
+        .incomplete_tasks_container {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            padding-left: 41.6%;
+        }
+
+        .incomplete_task {
+            display: flex;
+            align-items: center;
+        }
+
+        .task_box {
+            width: 400px;
+            height: 30px;
+            font-size: 18pt;
+            margin: 0.4rem;
+            color: grey;
+        }
+
+        .add_button {
+            height: 36px;
+            background-color: #fff;
+            border: 0.1rem solid grey;
+        }
+
+    </style>
+</head>
+<body>
+<h1>To do</h1>
+<form class='form1' method="POST" action="/addtasks">
+    <label>Add task</label>
+    <input class="task_box" type="text" name="task">
+    <input class="add_button" type="submit" value="Add">
+</form>
+<div class="incomplete_tasks_container">
+        <?php
+        foreach ($tasks as $task)
+        {
+            echo '<div class="incomplete_task">'
+                .'<h3>'. $task['task'] . '</h3>'
+                .'<form method="POST" action="/completed">'
+                .'<input type="hidden" name="complete" value="'. $task['id'] .'">'
+                .'<input class="complete_button" type="submit" value="✓">'
+                .'</form>'
+                .'</div>';
+        }
+        ?>
+    </div>
+</div>
+</body>
+</html>
