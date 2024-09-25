@@ -41,4 +41,10 @@ class TasksModel
         return $query->fetchAll();
     }
 
+    public function deleteTask($deletedTask) {
+        $query = $this->db->prepare("DELETE FROM `tasks` WHERE `id` = :deleted");
+        $query->bindParam(':deleted', $deletedTask);
+        $query->execute();
+    }
+
 }

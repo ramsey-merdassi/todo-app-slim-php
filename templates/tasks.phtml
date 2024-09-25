@@ -44,8 +44,7 @@
             margin: 2rem;
         }
 
-        .complete_button {
-            /*padding: 0;*/
+        .complete_btn {
             background-color: #fff;
             border: 0.1rem solid grey;
             height: 1.4rem;
@@ -72,7 +71,7 @@
             color: grey;
         }
 
-        .add_button {
+        .add_btn {
             height: 36px;
             background-color: #fff;
             border: 0.1rem solid grey;
@@ -85,22 +84,23 @@
 <form class='form1' method="POST" action="/addtasks">
     <label>Add task</label>
     <input class="task_box" type="text" name="task">
-    <input class="add_button" type="submit" value="Add">
+    <input class="add_btn" type="submit" value="Add">
 </form>
 <div class="incomplete_tasks_container">
-        <?php
-        foreach ($tasks as $task)
-        {
-            echo '<div class="incomplete_task">'
-                .'<h3>'. $task['task'] . '</h3>'
-                .'<form method="POST" action="/completed">'
-                .'<input type="hidden" name="complete" value="'. $task['id'] .'">'
-                .'<input class="complete_button" type="submit" value="✓">'
-                .'</form>'
-                .'</div>';
-        }
-        ?>
-    </div>
+    <?php
+    foreach ($tasks as $task)
+    {
+        echo '<div class="incomplete_task">'
+            .'<h3>'. $task['task'] . '</h3>'
+            .'<form method="POST" action="/completed">'
+            .'<input type="hidden" name="complete" value="'. $task['id'] .'">'
+            .'<input class="complete_btn" type="submit" value="✓">'
+            .'</form>'
+            .'</div>';
+    }
+    ?>
+<a href="/completedtasks">completed tasks</a>
+</div>
 </div>
 </body>
 </html>

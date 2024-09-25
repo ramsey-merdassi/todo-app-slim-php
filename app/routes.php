@@ -5,6 +5,7 @@ use App\Controllers\TasksController;
 use App\Controllers\AddTasksController;
 use App\Controllers\IncompleteTaskController;
 use App\Controllers\DisplayCompletedTasksController;
+use App\Controllers\DeletedTaskcontroller;
 use Slim\App;
 use Slim\Views\PhpRenderer;
 use Slim\Interfaces\RouteCollectorProxyInterface as Group;
@@ -25,6 +26,7 @@ return function (App $app) {
     $app->post('/addtasks', AddTasksController::class);
     $app->post('/completed', IncompleteTaskController::class);
     $app->get('/completedtasks', DisplayCompletedTasksController::class);
+    $app->post('/deleted', DeletedTaskController::class);
 
 //    $app->get('/completed');
 
